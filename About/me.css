@@ -55,14 +55,14 @@ nav {
     text-decoration-line: none;
     a:hover {
         color: rgb(56, 163, 145);
-        text-decoration: underline;
+        text-decoration: none;
     }
 }
 #dm{
-    text-align: center;
     a:hover {
     color: rgb(93, 187, 105);
-    text-decoration: underline;
+    text-decoration: none;
+    
     }
 }
 footer {
