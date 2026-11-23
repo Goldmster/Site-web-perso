@@ -1,0 +1,67 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #EEE6D8;
+    color: #333333;
+    margin: 0;
+}
+head {
+    background-color: #2d6a4f;
+    color: white;
+    padding: 20px;
+}
+h1 {
+    margin: 0;
+    font-size: 35px;
+    font-family: "Sofia";
+    color: white;
+    background-color: #93441A;
+
+}
+nav {
+    margin-top: 25px;
+    padding: 10px;
+    font-size: 20px;
+    text-align: center;
+    font-family: "Boucherie Block";
+}
+#intro {
+    font-weight: bold;
+    padding-left: 10px;
+    font-size: 15px;
+}
+#loisirs {
+    font-weight: bold;
+    padding: 10px;
+    font-size: 15px;
+}
+#loisirs h2 {
+    text-align: center;
+    color: #B67332;
+}
+#loisirs h3 {
+    text-align: left;
+    font-size: 20px;
+    color: #DAAB3A;
+}
+#loisirs p {
+    text-align: left;
+    font-size: 15px;
+}
+#loisirs li {
+    color: rgb(102, 102, 153);
+    ol.c {list-style-type: upper-roman;}
+}
+#lien {
+    text-decoration-line: none;
+    a:hover {
+        color: rgb(56, 163, 145);
+        text-decoration: underline;
+    }
+}
+footer {
+    margin-top: 25px;
+    font-weight: bold;
+    text-align: center;
+    font-size: 10px;
+    color: rgb(141, 137, 137);
+}
