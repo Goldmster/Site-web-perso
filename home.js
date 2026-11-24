@@ -1,4 +1,4 @@
-let user = "Fasil"; //Change the value to add your name
+let user = "BsK"; //My username
 let time = document.getElementById("time");
 let date = document.getElementById("date");
 let greeting = document.getElementById("greeting");
