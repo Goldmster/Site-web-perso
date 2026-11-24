@@ -36,7 +36,7 @@ div.box {
     margin: 1rem auto;
 }
 .night {
-    background-image: url("background1.jpg");
+    background-image: url("751608625332238424.jpg");
 }
 .morning {
     background-image: url("15 Powerful Morning Routines to Jumpstart Your Day.jpg");
@@ -45,7 +45,7 @@ div.box {
     background-image: url("808748045560397481.jpg");
 }
 .evening {
-    background-image: url("751608625332238424.jpg");
+    background-image: url("background1.jpg");
 }
 ul.links {
     position: absolute;
@@ -81,6 +81,9 @@ nav a{
     color: rgb(142, 190, 182);
     text-decoration: none;
     font-weight: bold;
+}
+nav a:hover {
+    color: rgb(102, 102, 212);
 }
 @media screen and (max-width: 500px) {
     #time {
