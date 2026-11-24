@@ -77,7 +77,11 @@ ul.links li a {
 ul.links li a img {
     width: 100%;
 }
-
+nav a{
+    color: rgb(142, 190, 182);
+    text-decoration: none;
+    font-weight: bold;
+}
 @media screen and (max-width: 500px) {
     #time {
         font-size: 70px;
