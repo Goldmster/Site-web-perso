@@ -35,6 +35,11 @@ div.box {
 #temperature {
     margin: 1rem auto;
 }
+#train {
+    margin-bottom: 20px;
+    font-size: 90px;
+    text-align: right;
+}
 .night {
     background-image: url("751608625332238424.jpg");
 }
