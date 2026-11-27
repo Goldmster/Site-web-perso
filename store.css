@@ -8,7 +8,13 @@ body {
     color: #222831;
     margin: 0;
 }
-
+nav {
+    margin-top: 25px;
+    padding: 10px;
+    font-size: 20px;
+    text-align: center;
+    font-family: "Boucherie Block";
+}
 .carte {
     width: 360px;
     margin: 40px auto;
