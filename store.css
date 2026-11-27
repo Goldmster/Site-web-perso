@@ -1,0 +1,93 @@
+/* Le style est déjà prêt : vous travaillez seulement dans script.js */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F2F4F6;
+    color: #222831;
+    margin: 0;
+}
+
+.carte {
+    width: 360px;
+    margin: 40px auto;
+    padding: 24px;
+    background-color: white;
+    border: 3px solid transparent;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+#portrait {
+    width: 150px;
+    border-radius: 50%;
+}
+
+#nom {
+    margin: 12px 0 4px 0;
+}
+
+#description {
+    color: #6B7280;
+    margin: 0;
+}
+
+/* Les boutons */
+.boutons button {
+    margin: 4px;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 8px;
+    background-color: #2F6F8F;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+}
+#previ {
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+}
+#achat {
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+}
+
+.boutons button:hover {
+    background-color: #E2572B;
+}
+
+#portrait {
+    /* margin-top: 16px;
+    padding: 12px; */
+    background-color: #FBE7DF;
+    border-radius: 8px;
+}
+#prix {
+    font-style: italic;
+}
+
+/* ===== Classes à utiliser en JavaScript ===== */
+
+/* Cache un élément */
+.cache {
+    display: none;
+}
+
+/* Mode nuit : à mettre sur le body */
+.sombre {
+    background-color: #222831;
+}
+.sombre .carte {
+    background-color: #393E46;
+    color: white;
+}
+
+/* Personnage en danger : à mettre sur la carte */
+.danger {
+    border-color: #E2572B;
+}
+.danger #nom {
+    color: #E2572B;
+}
