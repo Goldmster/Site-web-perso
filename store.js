@@ -1,1 +1,1 @@
-document.getElementById("store").innerHTML = "<h2>What's Up everyone </h2>";
+console.log("Le script est chargé !");
