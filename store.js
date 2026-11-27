@@ -1,79 +1,90 @@
 // ===== Éléments de la page =====
 const body = document.body;
+const nav = document.querySelector("nav");
 const titre = document.querySelector("body > h1");
-const zoneStore = document.getElementById("store");
 const secret = document.getElementById("secret");
 const liste = document.getElementById("liste");
 const prods = document.querySelectorAll(".prod");
 
-// ===== 1. MODE NUIT =====
+// ===== MODE SOMBRE / CLAIR =====
 const boutonNuit = document.createElement("button");
+boutonNuit.className = "btn-panier";
 boutonNuit.textContent = "🌙 Mode nuit";
-boutonNuit.style.marginLeft = "20px";
-boutonNuit.style.cursor = "pointer";
-document.querySelector("nav").appendChild(boutonNuit);
-
-// On retrouve le choix de la dernière visite
-if (localStorage.getItem("mode") === "sombre") {
-    body.classList.add("sombre");
-    boutonNuit.textContent = "☀️ Mode jour";
-}
+nav.appendChild(boutonNuit);
 
 boutonNuit.addEventListener("click", () => {
     body.classList.toggle("sombre");
-    const estSombre = body.classList.contains("sombre");
-    boutonNuit.textContent = estSombre ? "☀️ Mode jour" : "🌙 Mode nuit";
-    localStorage.setItem("mode", estSombre ? "sombre" : "clair");
+    if (body.classList.contains("sombre")) {
+        boutonNuit.textContent = "☀️ Mode jour";
+    } else {
+        boutonNuit.textContent = "🌙 Mode nuit";
+    }
 });
 
-// ===== 2. BARRE DE RECHERCHE =====
+// ===== RECHERCHE =====
 const champ = document.createElement("input");
-champ.type = "search";
 champ.placeholder = "🔍 Rechercher une prod...";
-champ.style.cssText =
-    "display:block; margin:20px auto; padding:10px; width:300px; border-radius:8px; border:1px solid #ccc;";
+champ.style.cssText = "display:block; margin:20px auto; padding:10px; width:300px;";
 liste.before(champ);
 
 champ.addEventListener("input", () => {
     const recherche = champ.value.toLowerCase();
     prods.forEach((prod) => {
         const nom = prod.querySelector("#nom").textContent.toLowerCase();
-        // .cache = display:none (défini dans ton CSS)
         prod.classList.toggle("cache", !nom.includes(recherche));
     });
 });
 
-// ===== 3. PANIER =====
-let panier = []; // liste de { nom, prix }
+// ===== PANIER =====
+let panier = []; // contient des { nom, prix }
 
+// Le bouton dans la nav
+const boutonPanier = document.createElement("button");
+boutonPanier.className = "btn-panier";
+nav.appendChild(boutonPanier);
+
+// La boîte du panier (on réutilise la classe .carte), cachée au départ
+const boitePanier = document.createElement("div");
+boitePanier.className = "carte cache";
+liste.before(boitePanier);
+
+// Clic sur le bouton = afficher / cacher la boîte
+boutonPanier.addEventListener("click", () => {
+    boitePanier.classList.toggle("cache");
+});
+
+// Met à jour le bouton et la boîte
 function majPanier() {
-    if (panier.length === 0) {
-        zoneStore.textContent = "🛒 Ton panier est vide";
-        return;
-    }
     const total = panier.reduce((somme, article) => somme + article.prix, 0);
-    const noms = panier.map((article) => article.nom).join(", ");
-    zoneStore.textContent = `🛒 ${panier.length} article(s) : ${noms} — Total : ${total} CHF`;
+    boutonPanier.textContent = `🛒 Panier (${panier.length})`;
+
+    if (panier.length === 0) {
+        boitePanier.innerHTML = "<h2>🛒 Panier</h2><p>Ton panier est vide</p>";
+    } else {
+        const lignes = panier.map((article) => `${article.nom} — ${article.prix} CHF`);
+        boitePanier.innerHTML =
+            "<h2>🛒 Panier</h2><p>" + lignes.join("<br>") + "</p>" +
+            `<p><b>Total : ${total} CHF</b></p>`;
+    }
 }
 
+// Clic sur "Acheter" : ajoute ou retire la prod
 prods.forEach((prod) => {
     const nom = prod.querySelector("#nom").textContent;
     const prix = parseInt(prod.querySelector("#prix").textContent); // "15 CHF" -> 15
-    const boutonAchat = prod.querySelector("#achat");
+    const bouton = prod.querySelector("#achat");
 
-    boutonAchat.addEventListener("click", () => {
-        const index = panier.findIndex((article) => article.nom === nom);
+    bouton.addEventListener("click", () => {
+        const dejaDedans = panier.some((article) => article.nom === nom);
 
-        if (index === -1) {
-            // Pas encore dans le panier : on l'ajoute
-            panier.push({ nom, prix });
-            boutonAchat.textContent = "Retirer ✓";
-            prod.classList.add("danger"); // bordure orange
-        } else {
-            // Déjà dedans : on le retire
-            panier.splice(index, 1);
-            boutonAchat.textContent = "Acheter";
+        if (dejaDedans) {
+            panier = panier.filter((article) => article.nom !== nom);
+            bouton.textContent = "Acheter";
             prod.classList.remove("danger");
+        } else {
+            panier.push({ nom, prix });
+            bouton.textContent = "Retirer ✓";
+            prod.classList.add("danger");
         }
         majPanier();
     });
@@ -81,9 +92,7 @@ prods.forEach((prod) => {
 
 majPanier();
 
-// ===== 4. EASTER EGG =====
-// Un clic sur le titre "My Store" affiche / cache ta section secrète
-titre.style.cursor = "pointer";
+// ===== EASTER EGG : clic sur "My Store" =====
 titre.addEventListener("click", () => {
     secret.classList.toggle("cache");
 });
