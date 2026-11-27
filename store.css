@@ -1,7 +1,7 @@
 /* Le style est déjà prêt : vous travaillez seulement dans script.js */
-title {
-    font-weight: bold;
-}
+/* title {
+    
+} */
 body {
     font-family: Arial, sans-serif;
     background-color: #F2F4F6;
@@ -32,6 +32,9 @@ body {
 #description {
     color: #6B7280;
     margin: 0;
+}
+#niveau {
+    font-weight: bold;
 }
 
 /* Les boutons */
@@ -68,6 +71,7 @@ body {
 }
 #prix {
     font-style: italic;
+    font-weight: bold;
 }
 
 /* ===== Classes à utiliser en JavaScript ===== */
