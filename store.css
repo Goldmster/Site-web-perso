@@ -1,5 +1,7 @@
 /* Le style est déjà prêt : vous travaillez seulement dans script.js */
-
+title {
+    font-weight: bold;
+}
 body {
     font-family: Arial, sans-serif;
     background-color: #F2F4F6;
